@@ -37,6 +37,14 @@ session_start();
           ?></h6>
         </div>
       <?php } ?>
+      <?php if (!empty($_SESSION['sql'])) { ?>
+        <div>
+          <h6 style='margin: 5px; color: black; font-weight: bold;'><?php
+          echo $_SESSION['sql'];
+          unset($_SESSION['sql']);
+          ?></h6>
+        </div>
+      <?php } ?>
       <button type="submit">Login</button>
     </form>
   </div>

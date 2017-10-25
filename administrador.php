@@ -26,6 +26,17 @@
     <div class="container">
       <br>
       <h1> Você esta logado!!</h1>
+        <?php
+          if (!empty($_SESSION['sql'])) { ?>
+            <div>
+              <br>
+  
+              <h6> Você fez login com a seguinte consulta: <?php
+              echo $_SESSION['sql'];
+              unset($_SESSION['sql']);
+              ?></h6>
+            </div>
+        <?php } ?>
     </div>
   </div>
   <footer class="footer">
