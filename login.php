@@ -1,27 +1,28 @@
 <?php
-  session_start(); // Inicia a sessão
+  session_start();
 
   $login = $_POST['login'];
   $senha = $_POST['senha'];
 
-  //$login = mysql_escape_string($_POST['login']);
-  //$senha = mysql_escape_string($_POST['senha']);
+  //$login = mysqli_escape_string($_POST['login']);
+  //$senha = mysqli_escape_string($_POST['senha']);
 
-  define('DB_SERVER', 'localhost');
-  define('DB_USERNAME', 'root'); //MUDE DE ACORDO COM SEU USUARIO
-  define('DB_PASSWORD', ''); //MUDE DE ACORDO COM SUA SENHA
-  define('DB_DATABASE', 'SSI');
-  $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+  $link = mysqli_connect('localhost',  'root', '', 'ssi');
+  if (mysqli_connect_errno()) {
+      printf("Connect failed: %s\n", mysqli_connect_error());
+      exit();
+  }
 
-  $sql = "SELECT * FROM usuario WHERE
-   = '$login' AND senha = '$S'"; //1' or '1' = '1
-  $result = mysqli_query($db,$sql);
+  $sql = "SELECT * FROM usuarios WHERE login = '$login' AND senha = '$senha'";
+  $result = mysqli_query($link,$sql);
   $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+  $_SESSION['user'] = $row['login'];
 
   if ($row) {
-    header("Location: administrador.php");
+      header("Location: administrador.php");
   }else{
-    $_SESSION['msg'] = "Erro! Login ou Senha incorretos!";
+    $_SESSION['msg'] = "<p style='margin: 10px; color: red; font-weight: bold;'>Login Errado !</p>";
     header("Location: index.php");
   }
+
 ?>

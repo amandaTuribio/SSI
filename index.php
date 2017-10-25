@@ -1,23 +1,22 @@
 <?php
-  session_start();
- ?>
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>SSI</title>
+  <title>Injection</title>
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" href="css/custom-tcc.css">
   <link rel="stylesheet" href="css/login.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
-
   <nav class="navbar navbar-ifsp">
     <div class="navbar-brand">
       <img src="{{ asset('img/ifsp_logo.png') }}" width="40" height="53" alt="">
-      <span class="text-header">Sistema de Gestão de Trabalhos de Conclusão de Curso</span>
+      <span class="text-header">SQL Injection - IFSP</span>
     </div>
   </nav>
   <div class="container">
@@ -31,24 +30,19 @@
       <label>SENHA</label>
       <input type="password" name="senha" value="">
       <?php if (!empty($_SESSION['msg'])) { ?>
-          <div>
-            <h6 style='margin: 5px; color: black; font-weight: bold;'><?php
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-            ?></h6>
-          </div>
-        <?php } ?>
+        <div>
+          <h6 style='margin: 5px; color: black; font-weight: bold;'><?php
+          echo $_SESSION['msg'];
+          unset($_SESSION['msg']);
+          ?></h6>
+        </div>
+      <?php } ?>
       <button type="submit">Login</button>
-
     </form>
   </div>
-
-
-
 </div>
 <footer class="footer">
-  <p class="text-footer">Sistema para Bancadas TCC - IFSP</p>
+  <p class="text-footer">SQL Injection - IFSP</p>
   </footer
 </body>
-</html>
 </html>
